@@ -1,4 +1,4 @@
-from magiccity.forms import SignupForm
+from magiccity.forms import SignupForm,UserProfileForm
 from django.shortcuts import render
 from magiccity.models import Neighbourhood,Post,Business
 from django.contrib.auth.decorators import login_required
