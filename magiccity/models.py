@@ -3,14 +3,14 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+
 # Create your models here.
 class Neighbourhood(models.Model):
     neighbourhood_name = models.CharField(max_length=200)
     neighbourhood_location = models.CharField(max_length=200)
     neighbourhood_description = models.TextField(max_length=500, blank=True)
-    neighbourhood_photo = CloudinaryField('photo', default='photo')
-    admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name='admin')
-
+    neighbourhood_photo = CloudinaryField('photo', default='img')
+    admin = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.neighbourhood_name
@@ -93,19 +93,10 @@ class Business(models.Model):
         self.business_name = name
 
 class Post(models.Model):
-    POST_CHOICES = (
-        ('1', 'Security'),
-        ('2', 'Health Emergency'),
-        ('3', 'Entertainment'),
-        ('4', 'Fire Breakouts'),
-        ('5', 'Playground'),
-        ('6', 'Death'),
-        ('7', 'Gym'),
-    )
-    category = models.CharField(max_length=120, choices=POST_CHOICES)
+
+    category = models.CharField(max_length=120)
     title = models.CharField(max_length=100, null=True)
-    post = models.TextField()
-    upload_date = models.DateTimeField(auto_now_add=True)
+    post = models.TextField(max_length=200)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
