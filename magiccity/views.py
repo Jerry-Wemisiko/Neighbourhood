@@ -53,9 +53,10 @@ def new_neighbourhood(request):
             neighbourhood = form.save(commit=False)
             neighbourhood.user = request.user
             neighbourhood.save()
-            messages.success(request,'Welcome to the hood')
+            messages.success(request,'New house owner in the neighbourhood!')
             return redirect('homepage')
     else:
         form= NeighbourHoodForm()
     return render(request, 'new_neighbourhood.html', {'form': form})
-      
+    
+def bepartof_neighbourhood(request,id):

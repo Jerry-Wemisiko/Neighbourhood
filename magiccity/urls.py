@@ -10,6 +10,10 @@ urlpatterns =[
     path('register/',views.register, name='registration'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
+    path('allhouses/',views.locations,name='locations'),
+    path('newhouse/',views.new_neighbourhood, name='newhouse'),
+    path('profile/',views.profile,name='profile'),
+    path('connect/',views.bepartof_neighbourhood,name='connect'),
  ]
 
 
