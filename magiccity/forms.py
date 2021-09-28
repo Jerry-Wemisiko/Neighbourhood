@@ -20,3 +20,8 @@ class NeighbourHoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
         exclude = ('user','users_count')
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ('user', 'neighbourhood')   

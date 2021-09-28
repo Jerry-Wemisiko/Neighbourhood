@@ -60,13 +60,13 @@ class Profile(models.Model):
 
 
 class Business(models.Model):
-    name = models.CharField(max_length=100,blank=False)
+    bizz_name = models.CharField(max_length=100,blank=False)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     email= models.CharField(max_length=150,blank=True)
     description=models.TextField()
 
     def __str__(self) -> str:
-        return self.name
+        return self.bizz_name
 
     def save_business(self):
         self.save()

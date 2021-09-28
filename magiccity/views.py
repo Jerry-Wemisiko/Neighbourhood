@@ -1,5 +1,5 @@
-from magiccity.forms import SignupForm,UserProfileForm,NeighbourHoodForm
-from django.shortcuts import render
+from magiccity.forms import SignupForm,UserProfileForm,NeighbourHoodForm,PostForm
+from django.shortcuts import get_object_or_404, render
 from magiccity.models import Neighbourhood,Post,Business
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
@@ -58,5 +58,50 @@ def new_neighbourhood(request):
     else:
         form= NeighbourHoodForm()
     return render(request, 'new_neighbourhood.html', {'form': form})
-    
+
+@login_required(login_url='/accounts/login/')  
 def bepartof_neighbourhood(request,id):
+    house = get_object_or_404(Neighbourhood,id = id)
+    request.user.profile.neighbourhood = house
+    request.user.profile.save()
+    return redirect('homepage')
+
+@login_required(login_url='/accounts/login/')
+def exit_neighbourhood(request, id):
+    neighbourhood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    messages.success(
+        request, 'Sorry to let you go')
+    return redirect('homepage')
+
+@login_required(login_url='/accounts/login/')
+def new_post(request, house_id):
+    neighbourhood = Neighbourhood.objects.get(id=house_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.neighbourhood = neighbourhood
+            post.user = request.user.profile
+            post.save()
+            messages.success(
+                    request, 'You have succesfully created a Post')
+            return redirect('single-hood', house_id)
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def search_business(request):
+    if 'bizz_name' in request.GET and request.GET["bizz_name"]:
+        search_term = request.GET.get("bizz_name")
+        found_businesses = Business.search_by_name(search_term)
+        message = f"{search_term}"
+        print(search_term)
+        context = {"found_business":found_businesses,"message":message}
+        return render(request, 'search.html',context)
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
