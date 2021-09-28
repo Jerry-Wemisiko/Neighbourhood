@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
+from pathlib import Path
 import cloudinary
+import django_heroku
+import dj_database_url as db_url
+import os
 from os import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'magiccity',
     'bootstrap4',
     'cloudinary',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,3 +134,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+cloudinary.config(
+  cloud_name = 'di4lsv4s9',  
+  api_key = '235771331651163',  
+  api_secret = 'XGUGtUfIqexXDOQyA55thI9Q3tU'  
+)
