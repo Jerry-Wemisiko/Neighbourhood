@@ -37,7 +37,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_number = models.IntegerField(default=0)
     email = models.CharField(max_length=30, blank=True)
-    profile_picture = CloudinaryField('profile')
     bio = models.TextField(max_length=500, blank=True)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, blank=True, null=True)
 
