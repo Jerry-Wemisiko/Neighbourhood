@@ -27,3 +27,8 @@ def register(request):
         form= SignupForm()
     return render(request, 'auth/signup.html', {'form': form})
 
+def locations(request):
+    houses = Neighbourhood.objects.all()
+    houses = houses[::-1]
+
+    return render(request, 'index.html',{'houses':houses})
