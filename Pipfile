@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 bootstrap4 = "*"
+cloudinary = "*"
 
 [dev-packages]
 

@@ -1,6 +1,15 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
+
+class Neighbourhood(models.Model):
+    neighbourhood_name = models.CharField(max_length=200)
+    neighbourhood_location = models.CharField(max_length=200)
+    neighbourhood_description = models.TextField(max_length=500, blank=True)
+    neighbourhood_photo = CloudinaryField('photo', default='photo')
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name='admin')
+
+
 class Business(models.Model):
     name = models.CharField(max_length=100,blank=False)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
