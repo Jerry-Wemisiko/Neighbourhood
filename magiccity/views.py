@@ -1,9 +1,10 @@
-from magiccity.forms import SignupForm,UserProfileForm
+from magiccity.forms import SignupForm,UserProfileForm,NeighbourHoodForm
 from django.shortcuts import render
 from magiccity.models import Neighbourhood,Post,Business
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect
+from django.contrib import messages
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -31,8 +32,8 @@ def register(request):
 def profile(request):
     if request.method == 'POST':
         p_form = UserProfileForm(request.POST, request.FILES, instance=request.user)
-        if  profile_form.is_valid():
-            profile_form.save()
+        if  p_form.is_valid():
+            p_form.save()
             return redirect('home')
     else:
         profile_form = UserProfileForm(instance=request.user)
@@ -43,3 +44,18 @@ def locations(request):
     houses = houses[::-1]
 
     return render(request, 'index.html',{'houses':houses})
+
+@login_required(login_url='/accounts/login/')
+def new_neighbourhood(request):
+    if request.method == 'POST':
+        form = NeighbourHoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighbourhood = form.save(commit=False)
+            neighbourhood.user = request.user
+            neighbourhood.save()
+            messages.success(request,'Welcome to the hood')
+            return redirect('homepage')
+    else:
+        form= NeighbourHoodForm()
+    return render(request, 'new_neighbourhood.html', {'form': form})
+      
