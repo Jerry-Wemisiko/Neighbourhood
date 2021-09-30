@@ -7,12 +7,14 @@ from django.shortcuts import redirect
 from django.contrib import messages
 
 # Create your views here.
+#Homepage view
 @login_required(login_url='/accounts/login/')
 def homepage(request):
     houses = Neighbourhood.objects.all()
 
     return render(request, 'index.html',{'houses':houses})
 
+#Sign Up view
 def register(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
