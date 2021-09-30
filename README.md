@@ -60,4 +60,4 @@ This project is under:
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE)
 
 ## Live Link
-Checkout the link [live] (https://skylesworld.herokuapp.com/)
+Checkout the link .[live].(https://skylesworld.herokuapp.com/)
