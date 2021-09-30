@@ -1,1 +1,1 @@
-web: gunicorn neighbourhood.wsgi 
+web: gunicorn neighbourhood.wsgi --timeout 60 --keep-alive 5 --log-level debug
