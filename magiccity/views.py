@@ -28,7 +28,7 @@ def register(request):
 
     else:
         form= SignupForm()
-    return render(request, 'auth/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 @login_required(login_url='/accounts/login/')    
 def profile(request):
@@ -73,7 +73,7 @@ def visit_neighbourhood(request, id):
             b_form.neighbourhood = neighbourhood
             b_form.user = request.user.profile
             b_form.save()
-            return redirect('viewhood', id)
+            return redirect('viewneighbourhood', id)
     else:
         form = BusinessForm()
     context = {
