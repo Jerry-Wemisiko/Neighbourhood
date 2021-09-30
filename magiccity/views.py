@@ -36,7 +36,7 @@ def profile(request):
             p_form.save()
             return redirect('home')
     else:
-        profile_form = UserProfileForm(instance=request.user)
+        p_form = UserProfileForm(instance=request.user)
     return render(request, 'profile.html',{ "p_form": p_form})
 
 def locations(request):

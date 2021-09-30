@@ -13,9 +13,9 @@ urlpatterns =[
     url('allhouses/',views.locations,name='locations'),
     url('newhouse/',views.new_neighbourhood, name='newhouse'),
     url('profile/',views.profile,name='profile'),
-    url('connect/',views.bepartof_neighbourhood,name='connect'),
-    url('viewneighbourhood/',views.visit_neighbourhood,name='viewneighbourhood'),
-    url('exitneighbourhood/',views.exit_neighbourhood,name='exitneighbourhood')
+    url('connect/<id>',views.bepartof_neighbourhood,name='connect'),
+    url('viewneighbourhood/<id>',views.visit_neighbourhood,name='viewneighbourhood'),
+    url('exitneighbourhood/<id>',views.exit_neighbourhood,name='exitneighbourhood')
  ]
 
 

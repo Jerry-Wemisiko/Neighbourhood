@@ -7,6 +7,7 @@
             <a href="{% url 'newhouse' %}" class="btn btn-primary ">Create Neighbourhood</a>
         </div>
         <section>
+            {% for house in houses %}
             <div class="col-lg-5">
                 <div class="row">
                     <div class="col-md-4">
@@ -17,19 +18,21 @@
                                 </div><hr>
                                 <div class="about">
                                     <h6 class="text-center">{{house.house_location}}</h6>
-                                </div>
+                                </div><hr>
                                 <div class="card-footer">
                                     {% if request.user.profile.neighbourhood == house %}
                                     <a href="{% url 'visitneighbourhood' %}" class="btn btn-success">VISIT</a><br>
-                                    <a href="{% url 'exitneighbourhood' %}" class="btn btn-success">LEAVE</a><hr>
-                                    <a href=""></a>
-
+                                    <a href="{% url 'exitneighbourhood' %}" class="btn btn-success">LEAVE</a>
+                                    {% elif not request.user.profile.neighbourhood %}
+                                    <a href="{ url 'connect' }" class="btn btn-primary">JOIN</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </section>
     </div>
 </div>
