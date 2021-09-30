@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
@@ -94,7 +93,7 @@ class Post(models.Model):
 
     category = models.CharField(max_length=120)
     title = models.CharField(max_length=100, null=True)
-    post = models.TextField(max_length=200)
+    post = models.TextField()
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 

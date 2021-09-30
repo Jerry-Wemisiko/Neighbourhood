@@ -6,11 +6,11 @@
         <div class="profile">
             <hr>
             <div class="media-body">
-                <h2 style=" color: white; font-size: 50px; font-family: 'Dancing Script', cursive;">{{user.username}}</h2>
-                <p style=" color: white; font-size: 30px;font-family: 'Dancing Script', cursive;"> Location: {{neighbourhood.house_location}}</p>
+                <h2 style=" color: white; font-size: 50px ;font-family: 'Recursive', sans serif;">{{user.username}}</h2>
+                <p style=" color: white; font-size: 30px; font-family: 'Recursive', sans serif;"> Location: {{neighbourhood.house_location}}</p>
                 
                 {% if request.user.profile.neighbourhood %}
-                <p style="color: white; font-size: 35px; font-weight: bold; font-family: 'Dancing Script', cursive;">My Hood <a class="btn btn-sm btn-success" href="">{{ user.profile.house_name }}</a>
+                <p style="color: white; font-size: 35px; font-weight: bold; font-family: 'Recursive', sans serif;">House <a class="btn btn-sm btn-success" href="">{{ user.profile.house_name }}</a>
                 </p>
                 {% endif %}
 

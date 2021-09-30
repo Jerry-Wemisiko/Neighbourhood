@@ -1,0 +1,87 @@
+{%include 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<body style="  font-family: 'Comic Sans MS', cursive, sans-serif;">
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div>
+                <div class="col-md-10">
+                    <a href="" style="margin-left: 400px;" class="btn btn-sm btn-success mb-4 mr-4" data-toggle="modal" data-target="#Business">NSTART BUSINESS</a>
+                        <a  style="margin-left: 300px;" class="btn btn-sm btn-success mb-4 mr-4" href="{% url 'post' neighbourhood.id %}">CREATE POST</a>
+                    <div class="card">
+                        <h5 class="mt-2 mb-3 p-2" style=" font-size: 30px;color: white; font-weight:bold; font-family: 'Recursive', sans serif;">{{ neighbourhood.house_name }},{{neighbourhood.house_location}}</h5>
+                        <h6 style=" font-size: 30px; color: white; font-family: 'Recursive', sans serif;"><span><strong></strong>Member{{neighbourhood.update_occupants | pluralize}}</span></h6>
+                    
+                        <div class="card-content">
+                            <h5 class="mb-3 p-2" style=" font-size: 25px; font-weight:bold; color: black; font-family: 'Recursive', sans serif;"><b>ABOUT {{ neighbourhood.house_name }} HOUSE</b></h5>
+                            <p class="card-text" style="color: white; font-size: 20px;">{{neighbourhood.description}}</p>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            {% for biz in business %}
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <h5 style="color: black; font-family: 'Recursive', sans serif;"><b>Business name</b>:{{biz.bizz_name}}<p style="font-size: 18px;"> <b>Email</b>: {{biz.email}}</p></h5>
+                                    <p style="color: white; font-size: 15px;">{{ biz.description }}</p>
+                                    <p style="color: black;font-family: 'Recursive', sans serif; font-size: 25px;"><b> Business Owner</b>:{{ biz.user.user.username}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                            {% for post in posts %}
+                            <div class="p-2">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-9 mt-3">
+                                            <h6>{{ post.user.username | title }}&nbsp;<b>{{ post.title }}</b> </h6>
+                                            <p>{{ post.post }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-sm btn-danger mb-4" href="{% url 'locations' %}">Exit Page</a>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="modal fade" id="Business" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content" style="background-color: rgb(36, 33, 33);">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-white" id="exampleModalCenterTitle" style="text-align: center; color: white; font-size: 30px;font-family: 'Recursive', sans serif;">START A BUSINESS</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"> <i class="fa fa-times-circle text-success"></i></span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="post" style="color: white;">
+                                        {% csrf_token%}
+                                        {% bootstrap_form form %}
+                                        <button type="submit" class="btn btn-md btn-success">Add</button>
+                                        <button type="button" class="btn btn-md btn-danger "data-dismiss="modal" style="float:right">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
