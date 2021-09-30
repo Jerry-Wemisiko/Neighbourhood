@@ -14,6 +14,7 @@ urlpatterns =[
     url('newhouse/',views.new_neighbourhood, name='newhouse'),
     url('profile/',views.profile,name='profile'),
     url('connect/',views.bepartof_neighbourhood,name='connect'),
+    url('viewneighbourhood/',views.visit_neighbourhood,name='viewneighbourhood'),
  ]
 
 

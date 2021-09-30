@@ -1,4 +1,4 @@
-from magiccity.forms import SignupForm,UserProfileForm,NeighbourHoodForm,PostForm
+from magiccity.forms import BusinessForm, SignupForm,UserProfileForm,NeighbourHoodForm,PostForm
 from django.shortcuts import get_object_or_404, render
 from magiccity.models import Neighbourhood,Post,Business
 from django.contrib.auth.decorators import login_required
@@ -58,6 +58,28 @@ def new_neighbourhood(request):
     else:
         form= NeighbourHoodForm()
     return render(request, 'new_neighbourhood.html', {'form': form})
+@login_required(login_url='/accounts/login/')
+def visit_neighbourhood(request, id):
+    neighbourhood = Neighbourhood.objects.get(id=id)
+    business = Business.objects.filter(neighbourhood_id=id)
+
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            b_form = form.save(commit=False)
+            b_form.neighbourhood = neighbourhood
+            b_form.user = request.user.profile
+            b_form.save()
+            return redirect('viewhood', id)
+    else:
+        form = BusinessForm()
+    context = {
+        'neighbourhood': neighbourhood,
+        'form': form,
+        'business': business,
+    }
+    return render(request, 'viewhood.html', context)
+
 
 @login_required(login_url='/accounts/login/')  
 def bepartof_neighbourhood(request,id):
