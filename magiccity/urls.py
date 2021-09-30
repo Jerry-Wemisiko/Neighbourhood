@@ -15,6 +15,7 @@ urlpatterns =[
     url('profile/',views.profile,name='profile'),
     url('connect/',views.bepartof_neighbourhood,name='connect'),
     url('viewneighbourhood/',views.visit_neighbourhood,name='viewneighbourhood'),
+    url('exitneighbourhood/',views.exit_neighbourhood,name='exitneighbourhood')
  ]
 
 

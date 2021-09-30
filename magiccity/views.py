@@ -58,6 +58,7 @@ def new_neighbourhood(request):
     else:
         form= NeighbourHoodForm()
     return render(request, 'new_neighbourhood.html', {'form': form})
+
 @login_required(login_url='/accounts/login/')
 def visit_neighbourhood(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
@@ -109,7 +110,7 @@ def new_post(request, house_id):
             post.save()
             messages.success(
                     request, 'You have succesfully created a Post')
-            return redirect('single-hood', house_id)
+            return redirect('viewneighbourhood', house_id)
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})

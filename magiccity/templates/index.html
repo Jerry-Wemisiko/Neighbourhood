@@ -20,7 +20,10 @@
                                 </div>
                                 <div class="card-footer">
                                     {% if request.user.profile.neighbourhood == house %}
-                                    <a href="{% url 'checkhood' %}" class="btn btn-success"></a>
+                                    <a href="{% url 'visitneighbourhood' %}" class="btn btn-success">VISIT</a><br>
+                                    <a href="{% url 'exitneighbourhood' %}" class="btn btn-success">LEAVE</a><hr>
+                                    <a href=""></a>
+
                                 </div>
                             </div>
                         </div>
