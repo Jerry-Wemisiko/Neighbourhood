@@ -3,17 +3,17 @@
 ## Author
 Jerry Wemisiko
 
-### Description
+## Description
 This is a Django application of a neighburhood where a user can add a neighbourhood,view various busineese, add a post that the whole neighbourhood can view and also be able to leave the neighbourhood.
 
-### Setup and Installations
+## Setup and Installations
 To get the code, clone the repository:  https://github.com/Jerry-Wemisiko/Neighbourhood.git
 And run the following commands;
 
     $ cd Neighbourhood
     $ pip install -r requirements.txt
 
-### Install and activate the virtual emvironment
+## Install and activate the virtual emvironment
 
     $ pipenv install
     $ pipenv shell
@@ -27,13 +27,13 @@ And run the following commands;
 
     $ python3 manage.py check
     $ make migrations neighbourhood
-    $ MAKE migrate 
+    $ make migrate 
 
-### Testing the application 
+## Testing the application 
  
     $ python3 manage.py test (app_name)
 
-### Running the Application
+## Running the Application
 
     $make serve
 
