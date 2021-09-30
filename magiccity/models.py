@@ -1,4 +1,5 @@
 from django.db import models
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
@@ -6,14 +7,13 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Neighbourhood(models.Model):
-    neighbourhood_name = models.CharField(max_length=200)
-    neighbourhood_location = models.CharField(max_length=200)
-    neighbourhood_description = models.TextField(max_length=500, blank=True)
-    neighbourhood_photo = CloudinaryField('photo', default='img')
-    admin = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=150)
+    location = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.neighbourhood_name
+        return self.name
 
     def create_neighbourhood(self):
         self.save()
@@ -25,18 +25,18 @@ class Neighbourhood(models.Model):
         self.delete()
 
     @classmethod
-    def find_hood(cls, hood_id):
-        return cls.objects.filter(id=hood_id)
+    def find_house(cls, house_id):
+        return cls.objects.filter(id=house_id)
 
-    def update_hood(self):
-        neighbourhood_name = self.neighbourhood_name
-        self.neighbourhood_name = neighbourhood_name
+    def update_occupants(self):
+        name = self.name
+        self.name = name
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_number = models.IntegerField(default=0)
-    email = models.CharField(max_length=30, blank=True)
+    id_number = models.IntegerField(default=0 ,primary_key=True)
+    email = models.EmailField(max_length=50)
     bio = models.TextField(max_length=500, blank=True)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, blank=True, null=True)
 
@@ -49,14 +49,13 @@ class Profile(models.Model):
             Profile.objects.create(user=instance)
         instance.profile.save()
 
+
     def save_profile(self):
         self.save()
 
+
     def delete_profile(self):
         self.delete()
-
-    def update_profile(cls, id):
-        Profile.objects.get(user_id=id)
 
 
 class Business(models.Model):
@@ -88,8 +87,8 @@ class Business(models.Model):
     	return bizz
 
     def update_business(self):
-        name = self.business_name
-        self.business_name = name
+        name = self.bizz_name
+        self.bizz_name = name
 
 class Post(models.Model):
 
@@ -100,7 +99,7 @@ class Post(models.Model):
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.title} Post'    
+        return self.title    
     
     def save_post(self):
         self.save()
