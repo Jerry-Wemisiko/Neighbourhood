@@ -7,9 +7,9 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Neighbourhood(models.Model):
-    name = models.CharField(max_length=150)
-    location = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
+    house_name = models.CharField(max_length=150)
+    house_location = models.CharField(max_length=200)
+    house_description = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

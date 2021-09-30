@@ -4,8 +4,26 @@
 <div class="container">
     <div class="container-fluid">
         <div class="col-sm-12">
-            <a href="{% url 'newhouse' %}"></a>
+            <a href="{% url 'newhouse' %}" class="btn btn-primary ">Create Neighbourhood</a>
         </div>
+        <section>
+            <div class="col-lg-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>HOUSE NO <a href="">{{house.neighbourhood_name}}</a></h5>
+                                </div><hr>
+                                <div class="about">
+                                    .
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
