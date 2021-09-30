@@ -8,6 +8,7 @@ django = "*"
 bootstrap4 = "*"
 cloudinary = "*"
 django-registration = "*"
+gunicorn = "*"
 
 [dev-packages]
 
