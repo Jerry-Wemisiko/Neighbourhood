@@ -17,7 +17,9 @@ urlpatterns =[
     path('connect/<id>',views.bepartof_neighbourhood,name='connect'),
     path('viewneighbourhood/<id>',views.visit_neighbourhood,name='viewneighbourhood'),
     path('exitneighbourhood/<id>',views.exit_neighbourhood,name='exitneighbourhood'),
-        path('<hood_id>/post/', views.new_post, name='post'),
+    path('<hood_id>/post/', views.new_post, name='post'),
+    url(r'^searched/', views.search_business, name='search'),
+
  ]
 
 

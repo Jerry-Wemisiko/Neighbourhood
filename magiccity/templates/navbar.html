@@ -2,38 +2,45 @@
 {% load bootstrap4 %}
 {% load static %}
 <style>
-    *{
+    * {
         box-sizing: border-box;
     }
-    .navbar{
+
+    .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: #333;
         color: white;
     }
-    .brand-title{
+
+    .brand-title {
         font-size: 1.5 rem;
         margin: .5rem;
     }
-    .navbar-links ul{
+
+    .navbar-links ul {
         margin: 0;
         padding: 0;
         display: flex;
     }
-    .navbar-links li{
+
+    .navbar-links li {
         list-style: none;
     }
-    .navbar-links li a{
-        text-decoration:  none;
+
+    .navbar-links li a {
+        text-decoration: none;
         color: white;
         padding: 1rem;
         display: block;
     }
-    .navbar-links li:hover{
+
+    .navbar-links li:hover {
         background-color: #555;
     }
-    .toggle-button{
+
+    .toggle-button {
         position: absolute;
         top: 75rem;
         right: 1rem;
@@ -41,9 +48,10 @@
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
-        height: 21px;   
-        }
-    .toggle-button bar{
+        height: 21px;
+    }
+
+    .toggle-button bar {
         height: 3px;
         width: 10px;
         background-color: white;
@@ -51,25 +59,60 @@
     }
 
 
-    @media (max-width: 500px){
-        .toggle-button{
+    @media (max-width: 500px) {
+        .toggle-button {
             display: flex;
         }
 
-        .navbar-links{
+        .navbar-links {
             width: 100%;
-            display: none; 
-        }  
-        .navbar{
+            display: none;
+        }
+
+        .navbar {
             flex-direction: column;
             align-items: flex-start;
         }
+
         .navbar-links ul {
             width: 100%;
             flex-direction: column;
         }
+
         .navbar-links li {
             text-align: center;
+        }
+
+        .search-box {
+            position: relative;
+        }
+      
+
+        .search-box input.form-control {
+            padding-right: 35px;
+            border-radius: 0;
+            padding-left: 0;
+            border-width: 0 0 1px 0;
+            box-shadow: none;
+        }
+
+        .search-box input.form-control:focus {
+            border-color: #000000;
+        }
+
+        .search-box .input-group-addon {
+            min-width: 35px;
+            border: none;
+            position: absolute;
+            right: 0;
+            z-index: 9;
+            padding: 7px 0 7px 7px;
+            height: 100%;
+        }
+
+        .search-box i {
+            color: #000000;
+            font-size: 30px;
         }
     }
 </style>
@@ -85,13 +128,24 @@
             <li><a href="profile/">Profile</a></li>
             <li><a href="logout/">Logout</a></li>
             <li><a href="admin/">Admin</a></li>
+
+            <li class="nav navbar-nav navbar-right">
+            <li class="navbar-form-wrapper">
+                <form class="navbar-form form-inline navbar-right" action="{% url 'search' %}" role="search">
+                    <div class="input-group search-box">
+                        <input type="text" id="search" class="form-control " name="business_name"
+                            placeholder="Search business...">
+                    </div>
+                </form>
+            </li>
         </ul>
+
     </div>
     <script>
         const toggleButton = document.getElementsByClassName('toggle-button')[0]
         const navbarLinks = document.getElementsByClassName('navbar-links')[0]
 
-        toggleButton.addEventListener('click',() =>{
+        toggleButton.addEventListener('click', () => {
             navbarLinks.classList.toggle('active')
         })
 
