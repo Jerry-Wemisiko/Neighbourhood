@@ -33,8 +33,10 @@
                     </div>
                     <div style="padding-top:1%;padding-bottom:1%">
                         {% if request.user.profile.neighbourhood == house %}
-                        <a href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-sm">VISIT</a><br>
-                        <a href="{% url 'exitneighbourhood' house.id %}" class="btn btn-success">LEAVE</a><br>
+                        <a style="width: 150px; margin-bottom: 3px;" href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-md">VISIT</a>
+                    
+                        <br>
+                        <a  style="width: 150px; href="{% url 'exitneighbourhood' house.id %}" class="btn btn-danger btn-md">LEAVE</a><br>
                         {% elif not request.user.profile.neighbourhood %}
                         <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
                         {% endif %}
