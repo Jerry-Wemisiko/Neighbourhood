@@ -6,11 +6,19 @@
         margin-top: 10px;
         margin-bottom: 30px;
     }
+    .home{
+        margin-top: 20px;
+        background-image: url(static/img/john-towner-3Kv48NS4WUU-unsplash.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        /* opacity: 0.5; */
+    }
 </style>
-<div class="container home">
+<div class="container home" >
     <div class="container-fluid">
         <div class="landing">
-            <h1 class="text-center" style="font-family: 'Recursive', sans serif; color: #000; font-weight: 700; font-style: italic;">Am Glad you Came</h1>
+            <h1 class="text-center" style="font-family: 'Recursive', sans serif; color: #dfdfdf; font-weight: 700; font-style: italic;">Am Glad you Came</h1>
             
         </div>
        
@@ -26,31 +34,29 @@
 
                     <div class="row" style="padding-top: 1%">
                         <div class="col-md-12">
-                            <h5 style="font-family: 'Recursive', sans serif;" class="text-center">HOUSE NO: <a href="">{{house.house_name}}</a></h5>
+                            <h5 style="font-family: 'Recursive', sans serif;font-weight: 700; color: #dfdfdf;" class="text-center">HSE NO:
+                                <a href="">{{house.house_name}}</a></h5>
 
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="text-center">{{house.house_location}}</h6>
+                        <div class="col-md-12">
+                            <h6 style="color:#dfdfdf; text-align:center;" class="text-center">{{house.house_location}}</h6>
 
                         </div>
                     </div>
                     <div style="padding-top:1%;padding-bottom:1%">
                         {% if request.user.profile.neighbourhood == house %}
-                        <a style="width: 150px; margin-bottom: 3px;" href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-md">VISIT</a>
+                        <a style="width: 150px; margin-bottom: 3px;font-weight: 700;" href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-md">VISIT</a>
                     
                         <br>
-                        <a  style="width: 150px; href="{% url 'exitneighbourhood' house.id %}" class="btn btn-danger btn-md">LEAVE</a><br>
+                        <a  style="width: 150px;font-weight: 700; "href="{% url 'exitneighbourhood' house.id %}" class="btn btn-danger btn-md">LEAVE</a><br>
                         {% elif not request.user.profile.neighbourhood %}
-                        <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
+                        <a style="font-weight: 700;"href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
                         {% endif %}
                     </div>
-
                 </div>
-
-
             </div>
             {% endfor %}
         </section>
