@@ -7,13 +7,13 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Neighbourhood(models.Model):
-    house_name = models.CharField(max_length=150)
-    house_location = models.CharField(max_length=200)
-    house_description = models.TextField(blank=True)
+    house_name = models.CharField(max_length=50)
+    house_location = models.CharField(max_length=30)
+    description = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.house_name
 
     def create_neighbourhood(self):
         self.save()
@@ -35,7 +35,7 @@ class Neighbourhood(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_number = models.IntegerField(default=0 ,primary_key=True)
+    id_number = models.IntegerField()
     email = models.EmailField(max_length=50)
     bio = models.TextField(max_length=500, blank=True)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, blank=True, null=True)

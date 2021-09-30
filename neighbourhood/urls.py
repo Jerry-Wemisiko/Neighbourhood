@@ -18,8 +18,8 @@ from django.conf.urls import include
 from django.conf.urls import url
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url('',include ('magiccity.urls')),
-    url('accounts/', include('registration.backends.simple.urls')),
-
+    url(r'^admin/', admin.site.urls),
+    url(r'',include ('magiccity.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    
 ]

@@ -65,7 +65,6 @@ def new_neighbourhood(request):
 def visit_neighbourhood(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
     business = Business.objects.filter(neighbourhood_id=id)
-
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():

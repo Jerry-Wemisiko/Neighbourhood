@@ -24,7 +24,7 @@
                                     <a href="{% url 'visitneighbourhood' house.id %}" class="btn btn-success">VISIT</a><br>
                                     <a href="{% url 'exitneighbourhood' house.id %}" class="btn btn-success">LEAVE</a>
                                     {% elif not request.user.profile.neighbourhood %}
-                                    <a href="{% url 'connect'house.id %}" class="btn btn-primary">JOIN</a>
+                                    <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
                                     {% endif %}
                                 </div>
                             </div>
