@@ -6,16 +6,9 @@
         margin-top: 10px;
         margin-bottom: 30px;
     }
-    .home{
-        margin-top: 20px;
-        background-image: url(static/img/john-towner-3Kv48NS4WUU-unsplash.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        /* opacity: 0.5; */
-    }
+   
 </style>
-<div class="container home" >
+<div class="container" >
     <div class="container-fluid">
         <div class="landing">
             <h1 class="text-center" style="font-family: 'Recursive', sans serif; color: #dfdfdf; font-weight: 700; font-style: italic;">Am Glad you Came</h1>
@@ -56,7 +49,10 @@
                         <a style="font-weight: 700;"href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
                         {% endif %}
                     </div>
+
                 </div>
+
+
             </div>
             {% endfor %}
         </section>

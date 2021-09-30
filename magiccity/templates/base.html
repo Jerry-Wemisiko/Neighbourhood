@@ -23,12 +23,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300&display=swap" rel="stylesheet">
-
+<style>
+     .body{
+        background-image: url(static/img/john-towner-3Kv48NS4WUU-unsplash.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 830px;
+        /* opacity: 0.5; */
+    }
+</style>
 <body>
     {% include "navbar.html" %}
-    {% block content %}
+    <div class="body">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
+    
+   
 
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -37,7 +49,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
     {% bootstrap_javascript %}
     {% endblock %}
-
+</div>
 </body>
 
 </html>
