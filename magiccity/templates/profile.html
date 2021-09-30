@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="col-sm-6">
+        <div class="profile">
+            <hr>
+            <div class="media-body">
+                <h2 style=" color: white; font-size: 50px; font-family: 'Dancing Script', cursive;">{{user.username}}</h2>
+                <p style=" color: white; font-size: 30px;font-family: 'Dancing Script', cursive;"> Location: {{neighbourhood.house_location}}</p>
+                
+                {% if request.user.profile.neighbourhood %}
+                <p style="color: white; font-size: 35px; font-weight: bold; font-family: 'Dancing Script', cursive;">My Hood <a class="btn btn-sm btn-success" href="">{{ user.profile.house_name }}</a>
+                </p>
+                {% endif %}
+
+                <p style=" color: white;">{{user.profile.bio}}</p>
+                <hr>
+                <a href="">
+                    <button class="btn btn-primary" style=" font-size: 15px; font-family: 'Dancing Script', cursive;">Edit Profile</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

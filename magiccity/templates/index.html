@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block content%}
+<style>
+    .create{
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+</style>
 <div class="container">
     <div class="container-fluid">
-        <div class="col-sm-12">
+        <div class="col-sm-12 create" style="text-align: center;">
             <a href="{% url 'newhouse' %}" class="btn btn-primary ">Create Neighbourhood</a>
         </div>
         <section>
@@ -11,23 +17,23 @@
             <div class="col-lg-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title">
-                                    <h5 class="text-center">HOUSE NO <a href="">{{house.house_name}}</a></h5>
+                        <div >
+    
+                                <div>
+                                    <h5 class="text-center">HOUSE NO: <a href="">{{house.house_name}}</a></h5>
                                 </div><hr>
                                 <div class="about">
                                     <h6 class="text-center">{{house.house_location}}</h6>
-                                </div><hr>
-                                <div class="card-footer">
+                                </div>
+                                <div>
                                     {% if request.user.profile.neighbourhood == house %}
-                                    <a href="{% url 'visitneighbourhood' house.id %}" class="btn btn-success">VISIT</a><br>
+                                    <a href="{% url 'visitneighbourhood' house.id %}" class="btn btn-success btn-sm">VISIT</a><br>
                                     <a href="{% url 'exitneighbourhood' house.id %}" class="btn btn-success">LEAVE</a>
                                     {% elif not request.user.profile.neighbourhood %}
                                     <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
                                     {% endif %}
                                 </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
