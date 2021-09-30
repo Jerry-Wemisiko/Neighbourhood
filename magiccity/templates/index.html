@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% block content%}
 <style>
-    .create{
+    .create {
         margin-top: 10px;
         margin-bottom: 30px;
     }
@@ -12,31 +12,37 @@
         <div class="col-sm-12 create" style="text-align: center;">
             <a href="{% url 'newhouse' %}" class="btn btn-primary ">Create Neighbourhood</a>
         </div>
-        <section>
+
+        <section class="magazine-section">
             {% for house in houses %}
             <div class="col-lg-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div >
-    
-                                <div>
-                                    <h5 class="text-center">HOUSE NO: <a href="">{{house.house_name}}</a></h5>
-                                </div><hr>
-                                <div class="about">
-                                    <h6 class="text-center">{{house.house_location}}</h6>
-                                </div>
-                                <div>
-                                    {% if request.user.profile.neighbourhood == house %}
-                                    <a href="{% url 'visitneighbourhood' house.id %}" class="btn btn-success btn-sm">VISIT</a><br>
-                                    <a href="{% url 'exitneighbourhood' house.id %}" class="btn btn-success">LEAVE</a>
-                                    {% elif not request.user.profile.neighbourhood %}
-                                    <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
-                                    {% endif %}
-                                </div>
-                        
+                <div style="box-sizing: border-box; margin-top:2%;">
+
+                    <div class="row" style="padding-top: 1%">
+                        <div class="col-md-12">
+                            <h5 style="font-family: 'Recursive', sans serif;" class="text-center">HOUSE NO: <a href="">{{house.house_name}}</a></h5>
+
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-center">{{house.house_location}}</h6>
+
+                        </div>
+                    </div>
+                    <div style="padding-top:1%;padding-bottom:1%">
+                        {% if request.user.profile.neighbourhood == house %}
+                        <a href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-sm">VISIT</a><br>
+                        <a href="{% url 'exitneighbourhood' house.id %}" class="btn btn-success">LEAVE</a><br>
+                        {% elif not request.user.profile.neighbourhood %}
+                        <a href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
+                        {% endif %}
+                    </div>
+
                 </div>
+
+
             </div>
             {% endfor %}
         </section>
