@@ -2,16 +2,16 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<body style="font-family: 'Comic Sans MS', cursive, sans-serif;">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-
+<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300&display=swap" rel="stylesheet">
+    <style></style>
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8  rgba-stylish-strong p-4">
-                <h3 class="text-center" style="font-family: 'Dancing Script', cursive; font-size: 40px; color: white;">CREATE A POST</h3>
+                <h3 class="text-center" style="font-family: 'Recursive', sans serif; font-size: 40px; color: white;">CREATE A POST</h3>
                 <form action="" method="post" style="color: white;">
                     {% csrf_token %}
                     {% bootstrap_form form %}
