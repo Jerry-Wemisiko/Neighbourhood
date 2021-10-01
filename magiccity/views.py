@@ -36,7 +36,7 @@ def profile(request):
         p_form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if  p_form.is_valid():
             p_form.save()
-            return redirect('homeage')
+            return redirect('homepage')
     else:
         p_form = UserProfileForm(instance=request.user)
     return render(request, 'profile.html',{ "p_form": p_form})
