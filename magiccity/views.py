@@ -24,7 +24,7 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('homepage')
+            return redirect('login')
 
     else:
         form= SignupForm()
@@ -39,7 +39,7 @@ def profile(request):
             return redirect('homepage')
     else:
         p_form = UserProfileForm(instance=request.user)
-    return render(request, 'profile.html',{ "p_form": p_form})
+    return render(request, 'index.html',{ "p_form": p_form})
 
 def locations(request):
     houses = Neighbourhood.objects.all()
