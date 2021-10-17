@@ -15,6 +15,7 @@ urlpatterns =[
     url('newhouse/',views.new_neighbourhood, name='newhouse'),
     url('profile/',views.profile,name='profile'),
     path('connect/<id>',views.bepartof_neighbourhood,name='connect'),
+    path('welcome/',views.welcome,name='welcome'),
     path('viewneighbourhood/<id>',views.visit_neighbourhood,name='viewneighbourhood'),
     path('exitneighbourhood/<id>',views.exit_neighbourhood,name='exitneighbourhood'),
     path('<hood_id>/post/', views.new_post, name='post'),

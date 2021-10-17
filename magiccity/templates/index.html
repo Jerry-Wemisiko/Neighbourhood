@@ -6,28 +6,17 @@
         margin-top: 10px;
         margin-bottom: 30px;
     }
-    .landing{
-        border: solid 3px black;
-        align-items: center;
-        padding: 100px;
-        background-image: url(static/img/mark-de-jong-mYoOSPFRO00-unsplash.jpg);
-        background-size: cover;
-    }
-   
+
 </style>
-<div class="ontainer" >
+
     <div class="grid_container">
-        <div class="landing" >
-            <h1 class="text-center" style="font-family: 'Recursive', sans serif; color: #dfdfdf; font-weight: 700; font-style: italic;">Am Glad you Came</h1>
-            
-        </div>
        
        <br>
         <div class="col-sm-12 create" style="text-align: center;">
-            <a href="newhouse/" class="btn btn-primary " style="font-family: 'Recursive', sans serif; color: #000; font-weight: 700; font-size: 30px; font-style: italic;">Create Neighbourhood</a>
+            <a href="newhouse/" class="btn btn-info " style="font-family: 'Recursive', sans serif; color: #000; font-weight: 700; font-size: 30px; font-style: italic;">Create Neighbourhood</a>
         </div>
 
-        <section class="magazine-section">
+        <div class="card">
             {% for house in houses %}
             <div class="col-lg-5">
                 <div style="box-sizing: border-box; margin-top:2%;">
@@ -62,8 +51,7 @@
 
             </div>
             {% endfor %}
-        </section>
+        </div>
     </div>
-</div>
 
 {% endblock %}

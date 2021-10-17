@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+<style>
+    .center-screen {
+      
+        background-color: #dfdfdf;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        height: max-content;
+    }
+</style>
+<div class="center-screen">
+    <h1 class="text-center">Am Glad you Came to our Estate</h1>
+    <a  href="{% url 'homepage' %}" style="cursor: pointer;" class="btn btn-success">Enter the Neighbourhood</button>
+</div>
+
+
+{% endblock %}

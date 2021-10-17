@@ -15,6 +15,11 @@ def homepage(request):
     return render(request, 'index.html',{'houses':houses})
 
 #Sign Up view
+@login_required(login_url='/accounts/login/')
+def welcome(request):
+
+    return render(request, 'welcome.html')
+    
 def register(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -56,7 +61,7 @@ def new_neighbourhood(request):
             neighbourhood.user = request.user
             neighbourhood.save()
             messages.success(request,'New house owner in the neighbourhood!')
-            return redirect('homepage')
+            return redirect('welcome')
     else:
         form= NeighbourHoodForm()
     return render(request, 'new_neighbourhood.html', {'form': form})
@@ -64,7 +69,7 @@ def new_neighbourhood(request):
 @login_required(login_url='/accounts/login/')
 def visit_neighbourhood(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
-    business = Business.objects.filter(neighbourhood_id=id)
+    business = Business.objects.filter(user_id=id)
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
@@ -111,7 +116,7 @@ def new_post(request, house_id):
             post.save()
             messages.success(
                     request, 'You have succesfully created a Post')
-            return redirect('viewneighbourhood', house_id)
+            return redirect('visit_neighbourhood', house_id)
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})

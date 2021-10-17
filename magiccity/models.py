@@ -28,8 +28,8 @@ class Neighbourhood(models.Model):
         return cls.objects.filter(id=house_id)
 
     def update_occupants(self):
-        name = self.name
-        self.name = name
+        name = self.house_name
+        return name
 
 
 class Profile(models.Model):
