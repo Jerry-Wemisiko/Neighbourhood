@@ -1,13 +1,23 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<body>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300&display=swap" rel="stylesheet">    <div class="container">
+<style>
+    @media only screen and (max-width:600px) {
+        .row{
+            align-items: center;
+        }
+        .col{
+            width: 100%;
+            display: block;
+            padding: auto;
+        }
+        
+    }
+</style>
+ <div class="grid_container">
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 rgba-stylish-strong  p-4" style="margin-top: -700px;">
+            <div class="col-md-4"><p></p></div>
+            <div class="col-md-4 rgba-stylish-strong col" style="height: max-content; width: max-content; margin-top: 100px;background-color:#dfdfdf; padding: 20px; border-radius: 5px;" >
                 <h3 class="text-center pt-4;font-family: 'Recursive', sans serif; font-size:20px;">ADD A NEW NEIGHBOURHOOD </h3>
                 <form style="color:white; margin-top: 0;" action="" method="post" enctype="multipart/form-data" novalidate>
                     {% csrf_token %}
@@ -15,8 +25,8 @@
                     <button class="btn btn-primary btn-sm">Add Neighbourhood</button>
                 </form><br>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
-</body>
+
 {% endblock %}
