@@ -2,56 +2,67 @@
 {% load bootstrap4 %}
 {% block content%}
 <style>
-    .create {
-        margin-top: 10px;
-        margin-bottom: 30px;
-    }
+.create {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+  /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
 
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 400px;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+}
 </style>
 
-    <div class="grid_container">
-       
-       <br>
+    <div class="container-fluid"> <br>
         <div class="col-sm-12 create" style="text-align: center;">
             <a href="newhouse/" class="btn btn-info " style="font-family: 'Recursive', sans serif; color: #000; font-weight: 700; font-size: 30px; font-style: italic;">Create Neighbourhood</a>
         </div>
 
-        <div class="card">
-            {% for house in houses %}
-            <div class="col-lg-5">
-                <div style="box-sizing: border-box; margin-top:2%;">
+        <div class="container">
+            <div class="row">
 
-                    <div class="row" style="padding-top: 1%">
-                        <div class="col-md-12">
-                            <h5 style="font-family: 'Recursive', sans serif;font-weight: 700; color: #dfdfdf;" class="text-center">HSE NO:
-                                <a href="">{{house.house_name}}</a></h5>
-
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h6 style="color:#dfdfdf; text-align:center;" class="text-center">{{house.house_location}}</h6>
+        {% for house in houses %}
+                <div class="column">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ house.house_image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{house.house_name}}</h5>
+                          <p class="card-text">{{house.description}}</p>
+                          <a href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success">VISIT</a>
+                          <a href="{% url 'exitneighbourhood' house.id %}" class =" btn btn-danger">LEAVE</a>
+                          <a href="{% url 'connect' house.id %}" class =" btn btn-info">JOIN</a>
 
                         </div>
-                    </div>
-                    <div style="padding-top:1%;padding-bottom:1%">
-                        {% if request.user.profile.neighbourhood == house %}
-                        <a style="width: 150px; margin-bottom: 3px;font-weight: 700;" href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success btn-md">VISIT</a>
-                    
-                        <br>
-                        <a  style="width: 150px;font-weight: 700; "href="{% url 'exitneighbourhood' house.id %}" class="btn btn-danger btn-md">LEAVE</a><br>
-                        {% elif not request.user.profile.neighbourhood %}
-                        <a style="font-weight: 700;"href="{% url 'connect' house.id %}" class="btn btn-primary">JOIN</a>
-                        {% endif %}
-                    </div>
-
+                      </div>
                 </div>
-
-
-            </div>
             {% endfor %}
+            </div>
+      
         </div>
+     
+       
     </div>
 
 {% endblock %}

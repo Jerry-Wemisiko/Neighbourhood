@@ -6,6 +6,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Neighbourhood(models.Model):
+    house_image = CloudinaryField('image')
     house_name = models.CharField(max_length=50)
     house_location = models.CharField(max_length=30)
     description = models.TextField(blank=True)
