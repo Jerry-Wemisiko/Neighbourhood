@@ -2,6 +2,8 @@
 {% load bootstrap4 %}
 {% block content%}
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 .create {
     margin-top: 10px;
     margin-bottom: 30px;
@@ -35,9 +37,9 @@
 }
 </style>
 
-    <div class="container-fluid"> <br>
+    <div class="container-fluid" style="font-family: 'Montserrat', sans-serif; font-weight: 700;"> <br>
         <div class="col-sm-12 create" style="text-align: center;">
-            <a href="newhouse/" class="btn btn-info " style="font-family: 'Recursive', sans serif; color: #000; font-weight: 700; font-size: 30px; font-style: italic;">Create Neighbourhood</a>
+            <a href="newhouse/" class="btn btn-info " style="font-family: 'Montserrat', sans-serif;color: #000; font-weight: 900; font-size: 30px;">Create Neighbourhood</a>
         </div>
 
         <div class="container">
@@ -46,18 +48,20 @@
         {% for house in houses %}
                 <div class="column">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{ house.house_image }}" class="card-img-top" alt="...">
+                       <strong><h5 style="margin-top: 5px;" class="card-title">{{house.house_name}}</h5></strong> 
+                        <hr>
                         <div class="card-body">
-                          <h5 class="card-title">{{house.house_name}}</h5>
+                          
                           <p class="card-text">{{house.description}}</p>
-                          <a href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success">VISIT</a>
-                          <a href="{% url 'exitneighbourhood' house.id %}" class =" btn btn-danger">LEAVE</a>
-                          <a href="{% url 'connect' house.id %}" class =" btn btn-info">JOIN</a>
+                          <hr>
+                          <a href="{% url 'viewneighbourhood' house.id %}" class="btn btn-success" style="border-radius: 5px;">VISIT</a>
+                          <a href="{% url 'exitneighbourhood' house.id %}" class =" btn btn-danger" style="border-radius: 5px;">LEAVE</a>
+                          <a href="{% url 'connect' house.id %}" class =" btn btn-info" style="border-radius: 5px;">JOIN</a>
 
                         </div>
                       </div>
                 </div>
-            {% endfor %}
+        {% endfor %}
             </div>
       
         </div>
