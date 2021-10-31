@@ -14,6 +14,7 @@ django-forms-bootstrap==3.1.0
 django-registration==3.2
 django-registration-redux==2.9
 pytz==2021.1
+fontawesomefree==5.13.1
 six==1.16.0
 soupsieve==2.2.1
 sqlparse ==0.4.2

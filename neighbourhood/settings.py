@@ -37,6 +37,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 # Application definition
 
 INSTALLED_APPS = [
+    'fontawesomefree',
     'magiccity',
     'bootstrap4',
     'cloudinary',
